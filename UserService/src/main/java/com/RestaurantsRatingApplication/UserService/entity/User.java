@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "micro_users")
+@Table(name = "user")
 public class User {
 
     @Id
