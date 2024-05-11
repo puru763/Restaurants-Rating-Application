@@ -1,10 +1,10 @@
 package com.RestaurantsRatingApplication.UserService.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,10 +27,12 @@ public class User {
     private String email;
     @Column(name = "ABOUT")
     private String about;
-    //other user properties that you want
 
-//    @Transient
-//    private List<Rating> ratings=new ArrayList<>();
+
+
+    //if we  dont want  to  store  rating in  user databse  then we  nedd to  use  this  annotation
+    @Transient
+    private List<Rating> ratings=new ArrayList<>();
 
 
 }
