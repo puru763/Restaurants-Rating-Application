@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RatingServiceImpl implements RatingService {
@@ -16,14 +17,17 @@ public class RatingServiceImpl implements RatingService {
     @Autowired
     private RatingRepository repository;
 
-    @Override
-    public Rating create(Rating rating) {
-        try {
-            return repository.save(rating);
-        } catch (DataAccessException ex) {
-            throw new RatingServiceException("Error creating rating: " + ex.getMessage());
-        }
+@Override
+public Rating create(Rating rating) {
+    try {
+        String randomRatingId = UUID.randomUUID().toString();
+        rating.setRatingId(randomRatingId); // Set the generated UUID as the ratingId
+        return repository.save(rating);
+    } catch (DataAccessException ex) {
+        throw new RatingServiceException("Error creating rating: " + ex.getMessage());
     }
+}
+
 
     @Override
     public List<Rating> getRatings() {
