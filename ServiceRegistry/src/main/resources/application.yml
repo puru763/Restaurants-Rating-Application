@@ -2,14 +2,12 @@
 
 #here in this  code  in client we have done  two thing false because   we  want  then  not  not  register   this  as  a  client
 
+
 eureka:
   instance:
     hostname: localhost
-
-
   client:
-
     register-with-eureka: false
     fetch-registry: false
 server:
-  port: 8761
+  port: 1111

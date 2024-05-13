@@ -16,25 +16,13 @@ public class RatingController {
     @Autowired
     private RatingService ratingService;
 
-//    @PostMapping("/create-rating")
-//    public ResponseEntity<Rating> create(@RequestBody Rating rating) {
-//        try {
-//            return ResponseEntity.status(HttpStatus.CREATED).body(ratingService.create(rating));
-//        } catch (Exception ex) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
-//    }
-
 
     @PostMapping("/create-rating")
     public ResponseEntity<?> create(@RequestBody Rating rating) {
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(ratingService.create(rating));
         } catch (Exception ex) {
-            // Log the exception for further analysis
             ex.printStackTrace();
-
-            // Return a response with the error message
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + ex.getMessage());
         }
     }
