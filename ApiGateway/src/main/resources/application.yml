@@ -1,0 +1,26 @@
+
+
+server:
+  port: 8084
+
+spring:
+  application:
+    name: ApiGateway
+
+cloud:
+  gateway:
+    routes:
+      - id: UserService
+        uri: lb://UserService
+        predicates:
+          - Path=/api/v1/user/**
+
+      - id: HotelService
+        uri: lb://HotelService
+        predicates:
+          - Path=/api/v1/hotels/**
+
+      - id: RatingService
+        uri: lb://RatingService
+        predicates:
+          - Path=/api/v1/rating/**
